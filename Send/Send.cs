@@ -1,0 +1,23 @@
+﻿using RabbitMQ.Client;
+using System.Text;
+
+// create a connection to the server
+var factory = new ConnectionFactory { HostName = "localhost" };
+using var connection = await factory.CreateConnectionAsync();
+using var channel = await connection.CreateChannelAsync();
+
+// Next we create a channel, which is where most of the API for getting things done resides.
+// To send, we must declare a queue for us to send to; 
+// then we can publish a message to the queue
+
+await channel.QueueDeclareAsync(queue: "hello", durable: true, exclusive: false, autoDelete: false,
+    arguments: new Dictionary<string, object?> { { "x-queue-type", "quorum" } });
+
+const string message = "Hello World!";
+var body = Encoding.UTF8.GetBytes(message);
+
+await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "hello", body: body);
+Console.WriteLine($" [x] Sent {message}");
+
+Console.WriteLine(" Press [enter] to exit.");
+Console.ReadLine();

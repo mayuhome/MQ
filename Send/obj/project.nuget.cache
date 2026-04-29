@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "N5gZtzVndsU=",
+  "success": true,
+  "projectFilePath": "/Users/majade/projects/MQ/Send/Send.csproj",
+  "expectedPackageFiles": [
+    "/Users/majade/.nuget/packages/rabbitmq.client/7.2.1/rabbitmq.client.7.2.1.nupkg.sha512",
+    "/Users/majade/.nuget/packages/system.threading.ratelimiting/8.0.0/system.threading.ratelimiting.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
